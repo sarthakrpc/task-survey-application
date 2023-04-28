@@ -4,4 +4,17 @@ interface ISurvey {
   inputOptionsRating: [String] | null;
 }
 
-export type { ISurvey };
+interface IResponse {
+  user: string;
+  responses:
+    | [
+        {
+          questionId: string | null;
+          answer: string | null;
+        }
+      ]
+    | null;
+  completed: boolean | null;
+}
+
+export type { ISurvey, IResponse };
