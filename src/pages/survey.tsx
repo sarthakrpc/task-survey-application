@@ -1,4 +1,3 @@
-import { Prev, Next } from "@/components/Button";
 import { ISurvey } from "@/utils/types";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import axios from "axios";
@@ -6,22 +5,16 @@ import { checkEnvironment } from "@/components/checkEnvironment";
 import { useEffect, useState } from "react";
 import Modal from "@/components/Modal";
 import ButtonSwitcher from "@/components/ButtonSwitcher";
+import SurveyModel from "@/models/SurveyModel";
+import connectMongo from "@/utils/connectMongo";
 
 interface id extends ISurvey {
   _id: string;
 }
 
-interface SurveyProps {
-  surveys: [id];
-}
-
-export async function getData() {
-  const { data } = await axios.get(checkEnvironment().concat("question"));
-  return data;
-}
-
 export const getServerSideProps = async () => {
-  const { surveys }: SurveyProps = await getData();
+  await connectMongo();
+  const surveys: [id] = JSON.parse(JSON.stringify(await SurveyModel.find({})));
 
   if (!surveys) {
     return {
