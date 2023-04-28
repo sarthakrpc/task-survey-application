@@ -67,9 +67,8 @@ export default function Example({ open, setOpen, answers }: ModalProp) {
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
-                          Are you sure you want to deactivate your account? All
-                          of your data will be permanently removed. This action
-                          cannot be undone.
+                          Are you sure you want to submit your response? All of
+                          your answers will be recorded and cannot be changed.
                         </p>
                       </div>
                     </div>
