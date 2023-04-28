@@ -5,6 +5,7 @@ import axios from "axios";
 import { checkEnvironment } from "@/components/checkEnvironment";
 import { useEffect, useState } from "react";
 import Modal from "@/components/Modal";
+import ButtonSwitcher from "@/components/ButtonSwitcher";
 
 interface id extends ISurvey {
   _id: string;
@@ -37,7 +38,6 @@ const Survey = ({
 
   useEffect(() => {
     // Random user generator
-
     const user = Math.random().toString(36).substring(7);
     sessionStorage.setItem("user", user);
   }, []);
@@ -117,30 +117,12 @@ const Survey = ({
             </div>
           </div>
 
-          <div className="flex flex-row justify-between">
-            {currentQuestion === 1 ? (
-              <div className="m-auto"></div>
-            ) : (
-              <Prev
-                currentQuestion={currentQuestion}
-                setCurrentQuestion={setCurrentQuestion}
-              />
-            )}
-
-            {currentQuestion === surveys.length ? (
-              <button
-                className="px-5 py-2 text-white font-semibold rounded-md bg-green-500 hover:bg-green-600 transition-all"
-                onClick={() => setOpen(true)}
-              >
-                Finish
-              </button>
-            ) : (
-              <Next
-                currentQuestion={currentQuestion}
-                setCurrentQuestion={setCurrentQuestion}
-              />
-            )}
-          </div>
+          <ButtonSwitcher
+            surveys={surveys}
+            currentQuestion={currentQuestion}
+            setCurrentQuestion={setCurrentQuestion}
+            setOpen={setOpen}
+          />
 
           <div className="m-auto"></div>
         </div>
