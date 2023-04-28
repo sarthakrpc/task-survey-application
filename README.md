@@ -19,6 +19,7 @@ pnpm dev
 ```
 
 Check at what port the next js is running at
+
 Go to `src/components/checkEnvironment.tsx` and change the port or URL as needed
 
 Next open the localhost or hosted webpage in web browser to see the result
