@@ -15,16 +15,19 @@ interface SurveyProps {
   surveys: [id];
 }
 
-export const getServerSideProps = async () => {
+export async function getData() {
   const { data } = await axios.get(checkEnvironment().concat("question"));
-  const { surveys }: SurveyProps = data;
+  return data;
+}
+
+export const getServerSideProps = async () => {
+  const { surveys }: SurveyProps = await getData();
 
   if (!surveys) {
     return {
       notFound: true,
     };
   }
-
   return {
     props: { surveys }, // will be passed to the page component as props
   };
