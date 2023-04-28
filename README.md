@@ -4,7 +4,7 @@
 First, create the .env.local file and input the following
 ```bash
 MONGO_URI="YOUR_URI"
-NODE_ENV="developemnt" 
+NODE_ENV="development" 
 ```
 NODE_ENV="production" if deployed somewhere
 
